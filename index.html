@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U - Página Oficial</title>
+    <style>
+        /* Estilos con tema Pixel Art 2D */
+        :root {
+            --pixel-red: #e74c3c;
+            --pixel-blue: #3498db;
+            --pixel-green: #2ecc71;
+            --pixel-yellow: #f1c40f;
+            --pixel-purple: #9b59b6;
+            --pixel-dark: #2c3e50;
+            --pixel-light: #ecf0f1;
+            --pixel-brown: #a67c52;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        @font-face {
+            font-family: 'PixelFont';
+            src: url('https://fonts.cdnfonts.com/css/pixelify-sans') format('woff2');
+            font-display: swap;
+        }
+
+        body {
+            font-family: 'PixelFont', 'Courier New', monospace;
+            background-color: #1a1a2e;
+            color: var(--pixel-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header estilo pixel art */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--pixel-dark);
+            border-bottom: 4px solid var(--pixel-blue);
+            z-index: 1000;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo h2 {
+            color: var(--pixel-yellow);
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 0 var(--pixel-red);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--pixel-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover {
+            border: 2px solid var(--pixel-green);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+
+        .btn-nav {
+            background: var(--pixel-red);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: 2px solid #c0392b;
+            box-shadow: 0 4px 0 #c0392b;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #c0392b;
+        }
+
+        /* Hero Section con estilo pixel art */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('imagen/fondo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--pixel-light);
+            position: relative;
+            border-bottom: 8px solid var(--pixel-black);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 0 var(--pixel-dark);
+            color: var(--pixel-light);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--pixel-light);
+            text-shadow: 2px 2px 0 var(--pixel-dark);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid;
+            font-size: 1.2rem;
+            transition: all 0.2s;
+            box-shadow: 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--pixel-red);
+            color: white;
+            border-color: #c0392b;
+            box-shadow: 0 6px 0 #c0392b;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #c0392b;
+        }
+
+        .btn-secondary {
+            background: var(--pixel-green);
+            color: white;
+            border-color: #27ae60;
+            box-shadow: 0 6px 0 #27ae60;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #27ae60;
+        }
+
+        /* Secciones */
+        .section {
+            padding: 5rem 0;
+            border-bottom: 4px dashed var(--pixel-blue);
+        }
+
+        .bg-dark {
+            background-color: var(--pixel-dark);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--pixel-yellow);
+            text-shadow: 2px 2px 0 var(--pixel-red);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 1rem;
+        }
+
+        .section h2:before, .section h2:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 4px;
+            background: var(--pixel-green);
+        }
+
+        .section h2:before {
+            right: 100%;
+        }
+
+        .section h2:after {
+            left: 100%;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .game-info {
+            list-style: none;
+            border: 3px solid var(--pixel-blue);
+            padding: 1.5rem;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .game-info li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .game-info li:before {
+            content: "►";
+            position: absolute;
+            left: 0;
+            color: var(--pixel-yellow);
+        }
+
+        .about-image {
+            border: 6px solid var(--pixel-brown);
+            background: var(--pixel-brown);
+            padding: 6px;
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+            border: 2px solid var(--pixel-dark);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border: 3px solid var(--pixel-purple);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--pixel-purple);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pixel-yellow);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(2px 2px 0 var(--pixel-dark));
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--pixel-light);
+            font-size: 1.5rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border: 4px solid var(--pixel-brown);
+            padding: 4px;
+            background: var(--pixel-brown);
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--pixel-yellow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border: 2px solid var(--pixel-dark);
+        }
+
+        /* Characters */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .character-card {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border: 3px solid var(--pixel-green);
+            position: relative;
+        }
+
+        .character-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--pixel-green);
+        }
+
+        .character-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 0; /* Eliminamos bordes redondeados para estilo pixel */
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 4px solid var(--pixel-yellow);
+            image-rendering: pixelated;
+        }
+
+        .character-role {
+            display: inline-block;
+            background: var(--pixel-red);
+            color: var(--pixel-light);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 2px solid #c0392b;
+        }
+
+        /* News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--pixel-light);
+            padding: 2rem;
+            color: var(--pixel-dark);
+            border: 4px solid var(--pixel-blue);
+            position: relative;
+        }
+
+        .news-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--pixel-blue);
+        }
+
+        .news-card time {
+            color: var(--pixel-red);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .news-card h3 {
+            margin: 0.5rem 0 1rem 0;
+            color: var(--pixel-dark);
+            font-size: 1.4rem;
+        }
+
+        /* Newsletter */
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 3px solid var(--pixel-blue);
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'PixelFont', monospace;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--pixel-yellow);
+        }
+
+        .success-message {
+            text-align: center;
+            color: var(--pixel-green);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 0 var(--pixel-dark);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f0f1a;
+            color: var(--pixel-light);
+            padding: 3rem 0 1rem;
+            border-top: 6px solid var(--pixel-purple);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--pixel-yellow);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--pixel-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--pixel-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--pixel-blue);
+            color: white;
+            border: 2px solid #2980b9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .section h2:before, .section h2:after {
+                width: 50px;
+            }
+        }
+
+        /* Efectos de pixelado adicionales */
+        .pixel-border {
+            border-style: solid;
+            border-width: 4px;
+            border-image: 
+                linear-gradient(45deg, var(--pixel-red), var(--pixel-blue)) 1;
+        }
+
+        .pixel-box {
+            position: relative;
+            background: var(--pixel-dark);
+            border: 4px solid var(--pixel-blue);
+        }
+
+        .pixel-box:before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 2px solid var(--pixel-yellow);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h2> U Scape </h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#about">Sobre el Juego</a></li>
+                    <li><a href="#features">Características</a></li>
+                    <li><a href="#gallery">Galería</a></li>
+                    <li><a href="#characters">Personajes</a></li>
+                    <li><a href="#news">Noticias</a></li>
+                    <li><a href="#contact" class="btn-nav">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1> U Scape </h1>
+            <p class="tagline">Una épica aventura en mundo pixelado</p>
+            <div class="cta-buttons">
+                <a href="#trailer" class="btn btn-primary">Ver Tráiler</a>
+                <a href="#features" class="btn btn-secondary">Características</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre el Juego -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Sobre el Juego</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Pixel Adventure es un emocionante juego de plataformas 2D 
+                        que te transporta a un mundo lleno de misterios y desafíos. 
+                        Con gráficos pixel art retro y una jugabilidad moderna, 
+                        revive la magia de los clásicos con nuevas mecánicas.
+                    </p>
+                    <ul class="game-info">
+                        <li><strong>Género:</strong> Plataformas, Aventura</li>
+                        <li><strong>Plataformas:</strong> PC, Nintendo Switch, PlayStation, Xbox</li>
+                        <li><strong>Lanzamiento:</strong> 15 de Diciembre 2024</li>
+                        <li><strong>Desarrollador:</strong> Studio Pixel</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="imagen/FONDO2.jpeg" alt="Captura de juego">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características -->
+    <section id="features" class="section bg-dark">
+        <div class="container">
+            <h2>Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Controles Precisos</h3>
+                    <p>Sistema de control responsive diseñado para plataformas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Arte Pixel Único</h3>
+                    <p>Gráficos retro con estilo artístico moderno</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3>Banda Sonora Épica</h3>
+                    <p>Música original que complementa la aventura</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>Sistema de Combate</h3>
+                    <p>Mecánicas de combate fluidas y satisfactorias</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Mundo Abierto</h3>
+                    <p>Explora diversos biomas interconectados</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Logros y Secretos</h3>
+                    <p>Descubre secretos ocultos y completa desafíos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>Galería</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="imagen/FONDO3.jpg" alt="Captura de Pixel Adventure">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagen/FONDO4.jpg" alt="Captura de Pixel Adventure">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagen/FONDO5.jpg" alt="Captura de Pixel Adventure">
+                </div>
+                <div class="gallery-item">
+                    <img src="imagen/FONDO3.jpg" alt="Captura de Pixel Adventure">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personajes -->
+    <section id="characters" class="section bg-dark">
+        <div class="container">
+            <h2>Personajes</h2>
+            <div class="characters-grid">
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/3498db/ffffff?text=Alex" alt="Alex">
+                    <h3>Alex</h3>
+                    <span class="character-role">Protagonista</span>
+                    <p>Un valiente aventurero en busca de la verdad</p>
+                </div>
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/9b59b6/ffffff?text=Luna" alt="Luna">
+                    <h3>Luna</h3>
+                    <span class="character-role">Aliada</span>
+                    <p>Misteriosa guía con poderes ancestrales</p>
+                </div>
+                <div class="character-card">
+                    <img src="https://via.placeholder.com/150/e74c3c/ffffff?text=Rex" alt="Rex">
+                    <h3>Rex</h3>
+                    <span class="character-role">Antagonista</span>
+                    <p>Poderoso señor que amenaza el equilibrio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias -->
+    <section id="news" class="section">
+        <div class="container">
+            <h2>Últimas Noticias</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <time datetime="2024-11-15">15/11/2024</time>
+                    <h3>Nuevo tráiler revelado</h3>
+                    <p>Mira el nuevo tráiler que muestra gameplay inédito</p>
+                </article>
+                <article class="news-card">
+                    <time datetime="2024-11-10">10/11/2024</time>
+                    <h3>Fecha de lanzamiento confirmada</h3>
+                    <p>El juego llegará el 15 de Diciembre 2024</p>
+                </article>
+                <article class="news-card">
+                    <time datetime="2024-11-05">05/11/2024</time>
+                    <h3>Demo disponible en Steam</h3>
+                    <p>Prueba la demo gratuita ahora en Steam</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="section bg-dark">
+        <div class="container">
+            <h2>Mantente Informado</h2>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="email" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn btn-primary">Suscribirse</button>
+            </form>
+            <div id="formMessage"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pixel Adventure</h3>
+                    <p>Una producción de Studio Pixel</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#about">Sobre el Juego</a></li>
+                        <li><a href="#features">Características</a></li>
+                        <li><a href="#gallery">Galería</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#">Twitter</a>
+                        <a href="#">Discord</a>
+                        <a href="#">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Studio Pixel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.98)';
+            } else {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+            }
+        });
+
+        // Manejo del formulario de newsletter
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const formMessage = document.getElementById('formMessage');
+            
+            // Simulación de envío
+            formMessage.innerHTML = '<p class="success-message">¡Gracias por suscribirte! Te mantendremos informado.</p>';
+            document.getElementById('newsletterForm').reset();
+            
+            // Aquí puedes agregar AJAX para enviar el email a un servidor
+            console.log('Email suscrito:', email);
+        });
+
+        // Animación de elementos al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animación
+        document.querySelectorAll('.feature-card, .gallery-item, .character-card, .news-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
